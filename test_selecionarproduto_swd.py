@@ -8,6 +8,7 @@ class Teste_Produto():
     # 2.1 Atributos
     url = "https://www.saucedemo.com"
    
+   
     # 2.2 Funções e Métodos
     def setup_method(self, method):                        # método de inicialização dos testes
         self.driver = webdriver.Chrome()            # instancia o objeto do selenium WebDriver como Chrome
