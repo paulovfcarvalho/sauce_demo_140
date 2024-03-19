@@ -16,13 +16,13 @@ def step_impl(context):
 
 @when(u'preecho os campos de login com o usuario {usuario} e senha {senha}')
 def step_impl(context,usuario,senha):
-    context.driver.find_elemente(By.ID,"user-name").send_keys(usuario)
-    context.driver.find_elemente(By.ID,"password").send_keys(senha)
-    context.driver.find_elemente(By.ID,"login-button").click()
+    context.driver.find_element(By.ID,"user-name").send_keys(usuario)
+    context.driver.find_element(By.ID,"password").send_keys(senha)
+    context.driver.find_element(By.ID,"login-button").click()
 
 @then(u'sou direcionado para pagina Home')
 def step_impl(context):
-    assert context.driver.find_elemete(By.CLASS_NAME,".title").text == "Products"  
+    assert context.driver.find_element(By.CSS_SELECTOR,".title").text == "Products"  
     time.sleep(2)
     
     # teardown / encerramento
