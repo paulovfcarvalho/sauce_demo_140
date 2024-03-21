@@ -9,7 +9,7 @@ def step_impl(context):
     #Setup / Inicialização
     context.driver = webdriver.Chrome()             # instanciar o objeto do Selenium WebDriver especializado para o Chrome
     context.driver.maximize_window                  # maximizar a jenela do navegador
-    context.driver.implicitly_wait(5)               # esperar ate 5seg por qualquer elemento
+    context.driver.implicitly_wait(1)               # esperar ate 5seg por qualquer elemento
     #Passo em si
     context.driver.get('https://www.saucedemo.com')
 
@@ -23,9 +23,12 @@ def step_impl(context,usuario,senha):
 @then(u'sou direcionado para pagina Home')
 def step_impl(context):
     assert context.driver.find_element(By.CSS_SELECTOR,".title").text == "Products"  
-    time.sleep(2)
-    
+    #time.sleep(2)
     # teardown / encerramento
     context.driver.quit()
-    
+
+@then(u'exibe a mensagem de erro no login')
+def step_impl(context):
+    assert context.driver.find_element(By.CSS_SELECTOR,"h3").text == "Epic sadface: Username and password do not match any user in this service"
+    context.driver.quit()
 

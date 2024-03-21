@@ -4,3 +4,25 @@ Feature: Selecionar Produto
         Given que acesso o site Sauce Demo
         When preecho os campos de login com o usuario standard_user e senha secret_sauce
         Then sou direcionado para pagina Home  
+
+    Scenario: Login com senha invalida
+        Given que acesso o site Sauce Demo    
+        When preecho os campos de login com o usuario standard_user e senha laranja
+        Then exibe a mensagem de erro no login
+
+    Scenario Outline: Login negativo
+        Given que acesso o site Sauce Demo    
+        When preecho os campos de login com o usuario <usuario> e senha <senha>
+        Then exibe a <mensagem> de erro no login
+
+        Examples:
+        |id| usuario       | senha        | mensagem                                                                  |
+        |01| standard_user | laranha      | Epic sadface: Username and password do not match any user in this service |
+        |02| standard_user |              | Epic sadface: Password is required                                        |
+        |03|               | secret_sauce | Epic sadface: Username is required                                        |
+        |04| juca          | secret_sauce | Epic sadface: Username and password do not match any user in this service |
+        |05| juca          | laranja      | Epic sadface: Username and password do not match any user in this service |
+        |06| juca          |              | Epic sadface: Password is required                                        |
+        |07|               |              | Epic sadface: Username is required                                        |
+        |08|               | laranja      | Epic sadface: Username is required                                        |
+
