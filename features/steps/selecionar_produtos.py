@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
+
 @given(u'que acesso o site Sauce Demo')
 def step_impl(context):
     #Setup / Inicialização
